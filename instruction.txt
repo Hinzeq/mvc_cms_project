@@ -1,0 +1,67 @@
+// Jak w matematyce:
+// 1. kontroler pokazuje wzory
+// 2. z modelu daje dane
+// 3. w view podstawia i wyswietla
+
+1. Tworzenie struktury plików:
+    Projekt
+        p: intex.php
+        p: .htaccess
+        k: libs
+            p: Router.php
+            p: Controller.php
+            p: View.php
+            p: Model.php
+        k: controllers
+            p: IndexController.php
+        k: models
+            p: IndexModel.php
+        k: views
+            p: header.php
+            k: index
+                p: News.php
+
+2. Przekierowanie w .htaccess
+    RewriteEngine on
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+    #wszystko co wystąpi ma nadpisać index.phpc
+    #dzięki temu nie wyskakuje 404 tylko przekierowuje na index.php
+
+    $this musi być używany gdy tworzymy obiekty i odwołujemy się do jego części
+    $xyz do parametrów wewnątrz metody/ funkcji
+
+3. libs/Router.php:
+    zbieram url do tablicy
+    pierwszym indeksem url tworzę kontroller
+
+4. libs/Controller.php
+    tworzę główny kontroller i dodaję do niego widok
+    dodaję do index.php
+    w głównym kontrolerze manipuluję 1 uri domena.pl/[qwe]/qwe/...
+
+5. controllers/Index.php   
+    tworzę podrzędny kontroller i przekazuję do niego resztę uri
+    dodaję do index.php
+    w kontrolerze manipuluję 2gim parametrem uri domena.pl/qwe/[qwe]/...
+
+6. libs/Model.php
+    tworze główny model z ogólnym połączeniem z bazą danych i metodą wybierającą dane
+    dodaję do index.php
+
+7. models/IndexModel.php
+    ewentualne metody bądź działania na bazie -> tutaj
+    to jest "kalkulator", odsyłacz itp.
+    ma być "gruby"
+
+8. libs/View.php
+    tworzę główny widok, posiadającego funkcję render
+    dodaję do index.php
+
+9. views/header.php...
+    tworzę templatki
+
+10. views/index/News.php
+    spersonalizowane wyświetlenia dla danej podstrony
+
+11. views/error.php
+    w momencie jak podany nieznane parametry w url
