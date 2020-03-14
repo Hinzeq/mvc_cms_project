@@ -4,7 +4,6 @@ class Router {
 
     function __construct() {
         $url = explode('/', rtrim($_GET['url'], '/'));
-
         
         if($url[0] == 'index.php') {
             $controller = "Index"; // default
@@ -18,7 +17,6 @@ class Router {
             include $file;
             $controller = $controller.'Controller';
             $control = new $controller($url);
-            
         }
 
         else {

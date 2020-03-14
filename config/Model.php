@@ -4,10 +4,9 @@ class Model {
 
     function __construct() {
         try {
-            //include 'config.php';
-            //$this->pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8", DB_USER, DB_PASS);
-            $this->pdo = new PDO("mysql:host=localhost;dbname=mvc_cms;charset=utf8", 'root', '');
-            echo 'Połączenie z bazą nawiązane<br/>';
+            include 'config.php';
+            $this->pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8", DB_USER, DB_PASS);
+            //$this->pdo = new PDO("mysql:host=localhost;dbname=mvc_cms;charset=utf8", 'root', '');
         }
         catch(PDOException $e) {
             die('Nie można nawiązać połączenia z bazą danych:<br/>'.$e->getMessage());
