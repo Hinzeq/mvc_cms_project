@@ -5,7 +5,7 @@ class Router {
     function __construct() {
         $url = explode('/', rtrim($_GET['url'], '/'));
         
-        if($url[0] == 'index.php') {
+        if($url[0] == 'index.php' || $url[0] == '') {
             $controller = "Index"; // default
         } else {
             $controller = ucfirst($url[0]);

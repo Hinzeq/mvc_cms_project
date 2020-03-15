@@ -6,23 +6,13 @@ class IndexModel extends Model {
         parent::__construct();
     }
 
-    function getPage() {
-        $query = $this->select('pages', '*', 'id = 1');
+    function getPage($select, $id) {
+        $query = $this->select("pages", "$select", "id = $id");
         return $query;
     }
 
-    function getPage2() {
-        $query = $this->select('pages', '*', 'id = 2');
-        return $query;
-    }
-
-    function getPage3() {
-        $query = $this->select('pages', '*', 'id = 3');
-        return $query;
-    }
-
-    function getPage4() {
-        $query = $this->select('pages', '*', 'id = 4');
+    function getNav() {
+        $query = $this->selectAll('pages', '*');
         return $query;
     }
 

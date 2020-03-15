@@ -8,35 +8,16 @@ class IndexController extends Controller {
         include 'models/IndexModel.php';
         $this->model = new IndexModel();
 
-        $action = 'Home';
-        if(isset($url[1])){
-            $action = ucfirst($url[1]);
+        $id = 1;
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
         }
-
-        $this->$action();
-    }
-
-    private function Home() {
-        $this->view->h1 = $this->model->getPage()['h1'];
-        $this->view->content = $this->model->getPage()['content'];
-        $this->view->Render();
-    }
-
-    private function Offert() {
-        $this->view->h1 = $this->model->getPage2()['h1'];
-        $this->view->content = $this->model->getPage2()['content'];
-        $this->view->Render();
-    }
-
-    private function About_us() {
-        $this->view->h1 = $this->model->getPage3()['h1'];
-        $this->view->content = $this->model->getPage3()['content'];
-        $this->view->Render();
-    }
-
-    private function Blog() {
-        $this->view->h1 = $this->model->getPage4()['h1'];
-        $this->view->content = $this->model->getPage4()['content'];
+        
+        $this->view->nav = $this->model->getNav();
+        $this->view->h1 = $this->model->getPage('h1', $id)['h1'];
+        $this->view->content = $this->model->getPage('content', $id)['content'];
+        $this->view->title = $this->model->getPage('meta_title', $id)['meta_title'];
+        $this->view->desc = $this->model->getPage('meta_desc', $id)['meta_desc'];
         $this->view->Render();
     }
 

@@ -6,7 +6,6 @@ class Model {
         try {
             include 'config.php';
             $this->pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8", DB_USER, DB_PASS);
-            //$this->pdo = new PDO("mysql:host=localhost;dbname=mvc_cms;charset=utf8", 'root', '');
         }
         catch(PDOException $e) {
             die('Nie można nawiązać połączenia z bazą danych:<br/>'.$e->getMessage());
@@ -25,6 +24,17 @@ class Model {
         $query->execute(); 
         
         $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    // for nav
+    public function selectAll($from, $select = '*') {
+        $query = 'SELECT '.$select.' FROM '.$from;
+
+        $query = $this->pdo->prepare($query);
+        $query->execute();
+        
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
