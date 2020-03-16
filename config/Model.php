@@ -4,7 +4,7 @@ class Model {
 
     function __construct() {
         try {
-            include 'config.php';
+            include 'admin/config.php';
             $this->pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8", DB_USER, DB_PASS);
         }
         catch(PDOException $e) {

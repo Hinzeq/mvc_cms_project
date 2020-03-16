@@ -3,18 +3,17 @@
 class Router {
 
     function __construct() {
-        // check when controller = NULL, not index.php
         if(isset($_GET['url'])) {
             $url = explode('/', rtrim($_GET['url'], '/'));
         } else {
             $url = ['index.php'];
         }
-        
+
         if($url[0] == 'index.php') {
-            $controller = "Index"; // default
+            $controller = 'Index';
         } else {
             $controller = ucfirst($url[0]);
-        }   
+        }
 
         $file = 'controllers/'.$controller.'Controller.php';
 
@@ -27,7 +26,7 @@ class Router {
         else {
             echo "Nie znaleziono kontrollera";
         }
-        
+
     }
 
 }
