@@ -11,6 +11,6 @@ include 'config/Controller.php';
 include 'config/Model.php';
 include 'config/View.php';
 
-$_SESSION['login'] = true; // test - temporarily for login system
+//$_SESSION['login'] = true; // test - temporarily for login system
 
 $Router = new Router();
