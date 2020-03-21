@@ -10,4 +10,8 @@ class View {
         include 'views/login.php';
     }
 
+    public function Change() {
+        include 'views/changepage.php';
+    }
+
 }

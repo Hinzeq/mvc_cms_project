@@ -4,7 +4,7 @@ class IndexController extends Controller {
 
     function __construct() {
         parent::__construct();
-        echo 'IndexController<br/>';
+        echo 'Index Controller<br/>';
         $this->view->Render();
     }
 

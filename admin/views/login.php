@@ -15,8 +15,6 @@
         <input type="submit" value="Zaloguj">
     </form>
 
-    <?php
-        if(isset($_SESSION['error'])) echo $_SESSION['error'];
-    ?>
+    <?php if(isset($_SESSION['error'])) echo $_SESSION['error']; ?>
 </body>
 </html>
