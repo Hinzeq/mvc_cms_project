@@ -18,6 +18,28 @@ class Model {
         $this->pdo = NULL;
     }
 
+    public function select($from, $select = '*', $where = NULL) {
+        $query = 'SELECT '.$select.' FROM '.$from;
+        if($where != NULL) $query = $query.' WHERE '.$where;
+
+        $query = $this->pdo->prepare($query);
+        $query->execute(); 
+        
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    // for nav
+    public function selectAll($from, $select = '*') {
+        $query = 'SELECT '.$select.' FROM '.$from;
+
+        $query = $this->pdo->prepare($query);
+        $query->execute();
+        
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     // in $this->value I have name of column then I can insert into this column data
     function value(...$items) {
         foreach ($items as $item) {
@@ -28,6 +50,13 @@ class Model {
 
     // I created this method because i don't know how many column will have query
     public function insertPage(...$items) {
+        /* expected argument:
+        first -> mane of table
+        second -> array columns name
+        rest -> values [you can use value method]*/
+        $from = $items[0];
+        array_shift($items);
+
         $column = $items[0];
         array_shift($items);
         $add = '';
@@ -37,25 +66,37 @@ class Model {
         }
         $add = rtrim($add, ",");
 
-        $query = $this->pdo->prepare("INSERT INTO pages VALUES(NULL, $add)");
-        dd($query);
+        $query = $this->pdo->prepare("INSERT INTO $from VALUES(NULL, $add)");
         for($i = 0; $i < count($items); $i++) {
             $query->bindValue(":$column[$i]", $items[$i]);
         }
 
         $query->execute();
-
     } 
+    
+    public function update(...$items) {
+        $from = $items[0];
+        array_shift($items);
 
-    // public function insert($h1, $content, $meta_title, $meta_desc) {    
-    //     $query = $this->pdo->prepare("INSERT INTO pages VALUES(NULL, :h1, :content, :meta_title, :meta_desc)");
-    //     $query->bindValue(':h1', $h1);
-    //     $query->bindValue(':content', $content);
-    //     $query->bindValue(':meta_title', $meta_title);
-    //     $query->bindValue(':meta_desc', $meta_desc);
-    //     $query->execute();
-        // dd($query);
-    // }
+        $column = $items[0];
+        array_shift($items);
+
+        $id = $items[0];
+        array_shift($items);
+        $add = '';
+
+        for($i = 0; $i < count($column); $i++) {
+            $add = $add."$column[$i] = :$column[$i],";
+        }
+        $add = rtrim($add, ",");
+
+        $query = $this->pdo->prepare("UPDATE $from SET $add WHERE id = $id");
+        for($i = 0; $i < count($items); $i++) {
+            $query->bindValue(":$column[$i]", $items[$i]);
+        }
+
+        $query->execute();
+    }
 
 }
 

@@ -10,7 +10,7 @@ class IndexController extends Controller {
         $this->model = new IndexModel();
 
         if(
-            ($_POST['h1_text'] != '') &&
+            (@$_POST['h1_text'] != '') &&
             ($_POST['content_text'] != '') &&
             ($_POST['meta_title'] != '') &&
             ($_POST['meta_desc'] != '')
