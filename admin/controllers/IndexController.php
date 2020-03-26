@@ -22,7 +22,7 @@ class IndexController extends Controller {
             $_SESSION['message'] = 'Nie podano wszystkich wartości!';
         }
 
-        $this->view->Render();
+        $this->view->IndexView();
     }
 
 }

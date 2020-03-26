@@ -33,7 +33,7 @@ class ChangepageController extends Controller {
         $this->view->content = $this->model->getPage('content', $id)['content'];
         $this->view->title = $this->model->getPage('meta_title', $id)['meta_title'];
         $this->view->desc = $this->model->getPage('meta_desc', $id)['meta_desc'];
-        $this->view->Change();
+        $this->view->ChangepageView();
     }
 
 }

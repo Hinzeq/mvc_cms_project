@@ -2,16 +2,20 @@
 
 class View {
 
-    public function Render() {
+    public function IndexView() {
         include 'views/index.php';
     }
 
-    public function LoginRender() {
+    public function LoginView() {
         include 'views/login.php';
     }
 
-    public function Change() {
+    public function ChangepageView() {
         include 'views/changepage.php';
+    }
+
+    public function DeletepageView() {
+        include 'views/deletepage.php';
     }
 
 }

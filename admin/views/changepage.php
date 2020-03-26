@@ -2,7 +2,7 @@
     include 'temp/head.php';
     include 'temp/navigate.php';
 ?>
-
+    <br/><br/>
         <div id="header">
             <div id="header-menu">
                 <ul>
@@ -17,7 +17,7 @@
         <div id="content">
             <h1>Tutaj możesz zmienić stronę</h1>
             <?php if(isset($_SESSION['message'])) echo $_SESSION['message']; ?>
-            <form action="changepage" method="post">
+            <form action="index?id=<?= $_GET['id']; ?>" method="post">
 
                 <p>Nazwa w menu:</p>
                 <textarea name="h1_text" cols="75" rows="4"><?= $this->h1; ?></textarea>

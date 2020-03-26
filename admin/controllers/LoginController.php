@@ -27,7 +27,7 @@ class LoginController extends Controller {
                 
             } else {
                 $this->view = new View();
-                $this->view->LoginRender();
+                $this->view->LoginView();
             }
 
         }

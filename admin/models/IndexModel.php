@@ -13,7 +13,7 @@ class IndexModel extends Model {
         $meta_desc = htmlspecialchars($meta_desc);
 
         $table_name = $this->value('h1', 'content', 'meta_title', 'meta_desc');
-        $this->insert('pages', $table_name, $h1, $content, $meta_title, $meta_desc);
+        $this->insertPage('pages', $table_name, $h1, $content, $meta_title, $meta_desc);
         // $this->insert($h1, $content, $meta_title, $meta_desc);
     }
 

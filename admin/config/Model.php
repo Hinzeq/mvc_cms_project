@@ -18,7 +18,7 @@ class Model {
         $this->pdo = NULL;
     }
 
-    public function select($from, $select = '*', $where = NULL) {
+    function select($from, $select = '*', $where = NULL) {
         $query = 'SELECT '.$select.' FROM '.$from;
         if($where != NULL) $query = $query.' WHERE '.$where;
 
@@ -30,7 +30,7 @@ class Model {
     }
 
     // for nav
-    public function selectAll($from, $select = '*') {
+    function selectAll($from, $select = '*') {
         $query = 'SELECT '.$select.' FROM '.$from;
 
         $query = $this->pdo->prepare($query);
@@ -49,7 +49,7 @@ class Model {
     }
 
     // I created this method because i don't know how many column will have query
-    public function insertPage(...$items) {
+    function insertPage(...$items) {
         /* expected argument:
         first -> mane of table
         second -> array columns name
@@ -74,7 +74,7 @@ class Model {
         $query->execute();
     } 
     
-    public function update(...$items) {
+    function update(...$items) {
         $from = $items[0];
         array_shift($items);
 
@@ -98,6 +98,10 @@ class Model {
         $query->execute();
     }
 
-}
+    function delete($id, $from) {
+        $query = $this->pdo->prepare("DELETE FROM $from WHERE id = $id");
+        dd($query);
+        $query->execute();
+    }
 
-    
+}
