@@ -4,7 +4,7 @@ class LoginController extends Controller {
 
     function __construct() {
         session_start();
-        echo 'Login Controller<br/>';
+        //echo 'Login Controller<br/>';
 
         if(isset($_SESSION['login'])) {
             header("HTTP/1.1 301 Moved Permanently");
@@ -20,9 +20,8 @@ class LoginController extends Controller {
                     header("HTTP/1.1 301 Moved Permanently");
                     header("Location: /mvc_cms/admin");
                 } else {
-                    $_SESSION['error'] = 'zly login lub haslo';
                     $this->view = new View();
-                    $this->view->LoginRender();
+                    $this->view->LoginView();
                 }
                 
             } else {

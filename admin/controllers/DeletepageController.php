@@ -4,7 +4,7 @@ class DeletepageController extends Controller {
 
     function __construct(){
         parent::__construct();
-        echo 'Deletepage Controller';
+        //echo 'Deletepage Controller';
 
         include 'models/DeletepageModel.php';
         $this->model = new DeletepageModel();

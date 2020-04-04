@@ -9,7 +9,10 @@
             <?php if(isset($_SESSION['message'])) echo $_SESSION['message']; ?>
             <form action="index" method="post">
 
-                <p>Nazwa w menu:</p>
+                <p>Nazwa w menu</p>
+                <textarea name="menu_text" cols="75" rows="4"></textarea>
+
+                <p>Nagłówek h1:</p>
                 <textarea name="h1_text" cols="75" rows="4"></textarea>
 
                 <p>Zawartość:</p>
@@ -20,6 +23,14 @@
 
                 <p>Opis dla SEO:</p>
                 <textarea name="meta_desc" cols="75" rows="4"></textarea>
+
+                <p>Znacznik meta index:</p>
+                <input type="radio" name="meta_index" value="index" checked="checked">index<br/>
+                <input type="radio" name="meta_index" value="noindex">noindex<br/><br/><br/>
+                
+                <p>Znacznik meta follow:</p>
+                <input type="radio" name="meta_follow" value="follow" checked="checked">follow<br/>
+                <input type="radio" name="meta_follow" value="nofollow">nofollow<br/><br/><br/>
 
                 <br/><br/><br/>
                 <input type="submit" value="Dodaj">

@@ -4,7 +4,7 @@ class ChangepageController extends Controller {
 
     function __construct() {
         parent::__construct();
-        echo 'Changepage Controller';
+        //echo 'Changepage Controller';
 
         include 'models/ChangepageModel.php';
         $this->model = new ChangepageModel();
@@ -33,6 +33,9 @@ class ChangepageController extends Controller {
         $this->view->content = $this->model->getPage('content', $id)['content'];
         $this->view->title = $this->model->getPage('meta_title', $id)['meta_title'];
         $this->view->desc = $this->model->getPage('meta_desc', $id)['meta_desc'];
+        $this->view->index = $this->model->getPage('meta_index', $id)['meta_index'];
+        $this->view->follow = $this->model->getPage('meta_follow', $id)['meta_follow'];
+        $this->view->menu_nav = $this->model->getPage('menu_nav', $id)['menu_nav'];
         $this->view->ChangepageView();
     }
 

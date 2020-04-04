@@ -11,7 +11,7 @@
         <p>Podaj login:</p>
         <input type="text" name="login"><br/>
         <p>Podaj hasło:</p>
-        <input type="text" name="pass"><br/><br/>
+        <input type="password" name="pass"><br/><br/>
         <input type="submit" value="Zaloguj">
     </form>
 
