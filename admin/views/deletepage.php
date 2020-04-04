@@ -9,7 +9,7 @@
             <form action="deletepage" method="post">
                 <select name="id" onchange="this.form.submit();">
                 <?php foreach($this->nav as $item) {
-                        echo '<option value='.$item['id'].'>'.$item['h1'].'</options>';
+                        echo '<option value='.$item['id'].'>'.$item['menu_nav'].'</options>';
                 } ?>
                 </select>
             </form>

@@ -18,9 +18,12 @@ class ChangepageController extends Controller {
             (@$_POST['h1_text'] != '') &&
             ($_POST['content_text'] != '') &&
             ($_POST['meta_title'] != '') &&
-            ($_POST['meta_desc'] != '')
+            ($_POST['meta_desc'] != '') &&
+            ($_POST['meta_index'] != '') &&
+            ($_POST['meta_follow'] != '') &&
+            ($_POST['menu_text'] != '')
         ) {
-            $this->model->updatePage($id, $_POST['h1_text'], $_POST['content_text'], $_POST['meta_title'], $_POST['meta_desc']);
+            $this->model->updatePage($_GET['id'], $_POST['h1_text'], $_POST['content_text'], $_POST['meta_title'], $_POST['meta_desc'], $_POST['meta_index'], $_POST['meta_follow'], $_POST['menu_text']);
 
             $_SESSION['message'] = 'Strona została pomyślnie zmieniona';
         }

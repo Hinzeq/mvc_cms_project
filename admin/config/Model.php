@@ -54,11 +54,8 @@ class Model {
         first -> mane of table
         second -> array columns name
         rest -> values [you can use value method]*/
-        $from = $items[0];
-        array_shift($items);
-
-        $column = $items[0];
-        array_shift($items);
+        $from = array_shift($items);
+        $column = array_shift($items);
         $add = '';
 
         for($i = 0; $i < count($column); $i++) {
@@ -75,14 +72,9 @@ class Model {
     } 
     
     function update(...$items) {
-        $from = $items[0];
-        array_shift($items);
-
-        $column = $items[0];
-        array_shift($items);
-
-        $id = $items[0];
-        array_shift($items);
+        $from = array_shift($items);
+        $column = array_shift($items);
+        $id = array_shift($items);
         $add = '';
 
         for($i = 0; $i < count($column); $i++) {
@@ -94,14 +86,14 @@ class Model {
         for($i = 0; $i < count($items); $i++) {
             $query->bindValue(":$column[$i]", $items[$i]);
         }
-
+        
         $query->execute();
     }
 
     function delete($id, $from) {
-        $query = $this->pdo->prepare("DELETE FROM $from WHERE id = $id");
-        dd($query);
-        $query->execute();
+        @$query = $this->pdo->prepare("DELETE FROM $from WHERE id = $id");
+        
+        @$query->execute();
     }
 
 }

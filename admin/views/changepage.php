@@ -37,24 +37,24 @@
                 <p>Znacznik meta index</p>
                     <?php
                         if($this->index == "index"){
-                            echo '<input type="radio" name="index" value="index" checked="checked">index<br/>';
-                            echo '<input type="radio" name="index" value="noindex">noindex<br/><br/><br/>';
+                            echo '<input type="radio" name="meta_index" value="index" checked="checked">index<br/>';
+                            echo '<input type="radio" name="meta_index" value="noindex">noindex<br/><br/><br/>';
                         }
                         else{
-                            echo '<input type="radio" name="index" value="index">index<br/>';
-                            echo '<input type="radio" name="index" value="noindex" checked="checked">noindex<br/><br/><br/>';
+                            echo '<input type="radio" name="meta_index" value="index">index<br/>';
+                            echo '<input type="radio" name="meta_index" value="noindex" checked="checked">noindex<br/><br/><br/>';
                         }
                     ?>
                 
                 <p>Znacznik meta follow:</p>
                     <?php
                         if($this->follow == "follow"){
-                            echo '<input type="radio" name="follow" value="follow" checked="checked">follow<br/>';
-                            echo '<input type="radio" name="follow" value="nofollow">nofollow<br/><br/><br/>';
+                            echo '<input type="radio" name="meta_follow" value="follow" checked="checked">follow<br/>';
+                            echo '<input type="radio" name="meta_follow" value="nofollow">nofollow<br/><br/><br/>';
                         }
                         else{
-                            echo '<input type="radio" name="follow" value="follow">follow<br/>';
-                            echo '<input type="radio" name="follow" value="nofollow" checked="checked">nofollow<br/><br/><br/>';
+                            echo '<input type="radio" name="meta_follow" value="follow">follow<br/>';
+                            echo '<input type="radio" name="meta_follow" value="nofollow" checked="checked">nofollow<br/><br/><br/>';
                         }
                     ?>
 
